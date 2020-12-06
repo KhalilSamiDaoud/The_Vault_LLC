@@ -20,6 +20,7 @@
 			</div>
 		</nav>
   
+		<!-- change to table name -->
 		<div class="container">
 			<div class="section no-pad-bot" id="index-banner">
 				<h3 class="header center">Modify Table - Item</h3>
@@ -46,7 +47,7 @@
 		$db_password = "";
 		$database = "mydb";
 		
-		
+		//set local vars
 		$itemid=$_POST['itemid']; 
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
@@ -55,11 +56,13 @@
 			die("Connection failed: " . mysqli_connect_error());
 		}
 			
+		//update
 		$sql = 'DELETE FROM item WHERE ItemID='.$itemid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
+		//update link to table page
 		echo "<script>window.location = 'item.php'</script>";
 		}
 		
@@ -70,7 +73,7 @@
 		$db_password = "";
 		$database = "mydb";
 		
-		
+		//update vars
 		$itemid=$_POST['itemid']; 
 		$brandid=$_POST['brandid'];
 		$itemname=$_POST['itemname'];
@@ -81,11 +84,13 @@
 			die("Connection failed: " . mysqli_connect_error());
 		}
 			
+		//update 
 		$sql = 'INSERT INTO item VALUES ('.$itemid.', '.$brandid.', "'.$itemname.'");';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
+		//update 
 		echo "<script>window.location = 'item.php'</script>";
 		}
 		
@@ -96,7 +101,7 @@
 		$db_password = "";
 		$database = "mydb";
 		
-		
+		//update
 		$itemid=$_POST['itemid']; 
 		$brandid=$_POST['brandid'];
 		$itemname=$_POST['itemname'];
@@ -107,16 +112,18 @@
 			die("Connection failed: " . mysqli_connect_error());
 		}
 			
+		//update
 		$sql = 'UPDATE item SET ItemID='.$itemid.', BrandID='.$brandid.', ItemName="'.$itemname.'" WHERE ItemID='.$itemid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
-	
+		
+		//update
 		echo "<script>window.location = 'item.php'</script>";
 		}
 	?>
 	
-
+ <!-- forms, update add, remove, update -->
   <div class="row">
     <div class="col s12">
       <ul class="tabs">

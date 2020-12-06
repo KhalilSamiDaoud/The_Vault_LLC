@@ -32,7 +32,7 @@
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
 					<select>
-						<option value="1">Item</option>
+						<option value="1" hfref="item.php">Item</option>
 						<option value="2">Brand</option>
 						<option value="3">Buys</option>
 						<option value="4">Contains</option>
@@ -94,6 +94,7 @@
 	  
 		<br>
 		
+		<!-- change the href to "table"_modify -->
 		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="item_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
   
 		<br><br><br><br>
