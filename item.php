@@ -45,13 +45,64 @@
 					</select>
 			</div>
   
-			<ul class="collection with-header">
+			<!--<ul class="collection with-header">
 				<li class="collection-header"><h4>The name of the Table</h4></li>
 				<li class="collection-item">table entry 1</li>
 				<li class="collection-item">table entry 2</li>
 				<li class="collection-item">table entry 3</li>
 				<li class="collection-item">table entry 4</li>
-			</ul>
+			</ul>-->
+<?php
+	$servername = "localhost";
+	$db_username = "root";
+	$db_password = "password";
+	$database = "440_project_chk";
+	
+	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
+
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+		
+	$shop = array( array("title"=>"rose", "price"=>1.25 , "number"=>15),
+				   array("title"=>"daisy", "price"=>0.75 , "number"=>25),
+				   array("title"=>"orchid", "price"=>1.15 , "number"=>7)); 
+	
+	
+	$sql = 'SELECT * FROM item;';
+	$result = $conn->query($sql);
+	
+	$list = array(array("ItemID"=>"","BrandID"=>"","Item Name"=>""));
+	if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc()) {
+			#echo "ItemID: " . $row["ItemID"]. " BrandID: " . $row["BrandID"]. " ItemName ". $row["ItemName"]. "<br>";
+			array_push($list, array($row["ItemID"],$row["BrandID"],$row["ItemName"]));
+		}
+	} else {
+		echo "0 results";
+	}
+?>
+
+<?php if (count($list) > 0): ?>
+	<table>
+		<thead>
+			<tr>
+				<th><?php echo implode('</th><th>', array_keys(current($list))); ?></th>
+			</tr>
+		</thead>
+<tbody>
+
+<?php foreach ($list as $col): array_map('htmlentities', $col); ?>
+    <tr>
+      <td><?php echo implode('</td><td>', $col); ?></td>
+    </tr>
+<?php endforeach; ?>
+  </tbody>
+</table>
+<?php endif; ?>
+
+
 	  
 			<a class="waves-effect waves-light btn-large modal-trigger" data-target="add"><i class="material-icons left">add_circle</i>ADD</a>
 			<a class="waves-effect waves-light btn-large modal-trigger" data-target="remove"><i class="material-icons left">remove_circle</i>REMOVE</a>
@@ -125,16 +176,3 @@
 		</script>
 	</body>
 </html>
-
-<?php
-	$servername = "localhost";
-	$db_username = "root";
-	$db_password = "password";
-	$database = "440_project_chk";
-	
-	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
-
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
-?>
