@@ -32,11 +32,11 @@
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
 					<select name="forma" onchange="location = this.value;">
-						<option value="item.php">Item</option>
+						<option value="item.php">Customer</option>
 						<option value="2">Brand</option>
 						<option value="3">Buys</option>
 						<option value="4">Contains</option>
-						<option value="5">Customer</option>
+						<option value="5">Item</option>
 						<option value="6">CustPhoneNum</option>
 						<option value="7">Distributor</option>
 						<option value="9">Shipment</option>
@@ -58,15 +58,15 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 			
-	$sql = 'SELECT * FROM item;';
+	$sql = 'SELECT * FROM customer;';
 	$result = $conn->query($sql);
 	
-	$list = array(array("ItemID"=>"","BrandID"=>"","Item Name"=>""));
+	$list = array(array("CustomerID"=>"","CustomerLastName"=>"","CustomerFirstName"=>"", "CustomerEmail"=>""));
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			#echo "ItemID: " . $row["ItemID"]. " BrandID: " . $row["BrandID"]. " ItemName ". $row["ItemName"]. "<br>";
-			array_push($list, array($row["ItemID"],$row["BrandID"],$row["ItemName"]));
+			#echo "Customer ID: " . $row["CustomerID"]. " Last Name: " . $row["CustomerLastName"]. " First Name: ". $row["CustomerFirstName"]. " Customer Email: ". $row["CustomerEmail"]."<br>";
+			array_push($list, array($row["CustomerID"],$row["CustomerLastName"],$row["CustomerFirstName"], $row["CustomerEmail"]));
 		}
 	} else {
 		echo "0 results";
@@ -95,7 +95,7 @@
 		<br>
 		
 		<!-- change the href to "table"_modify -->
-		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="item_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
+		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="customer_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
   
 		<br><br><br><br>
 		</div>

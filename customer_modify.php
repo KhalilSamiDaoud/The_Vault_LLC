@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="theme-color" content="#64FFDA" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+		<link rel='shortcut icon' type='image/png' href='favicon.png' />
+		<title>The Vault LLC Database</title>
+
+		<!-- CSS  -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	</head>
+	
+	<body>
+		<nav class="teal lighten-1" role="navigation">
+			<div class="nav-wrapper container thin-font">
+				<a id="logo-container" href="#" class="brand-logo">Welcome - ADMIN</a>
+			</div>
+		</nav>
+  
+		<!-- change to table name -->
+		<div class="container">
+			<div class="section no-pad-bot" id="index-banner">
+				<h3 class="header center">Modify Table - Customer</h3>
+			</div>
+			
+	<!-- remove -->
+	<?php
+	    if(isset($_POST['remove'])) { 
+            remove(); 
+        } 
+		
+	    if(isset($_POST['add'])) { 
+            add(); 
+        } 
+		
+	    if(isset($_POST['update'])) { 
+            update(); 
+        } 
+		
+		//remove stuff
+		function remove() {
+		$servername = "localhost";
+		$db_username = "root";
+		$db_password = "";
+		$database = "mydb";
+		
+		//set local vars
+		$customerid=$_POST['customerid']; 
+		
+		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
+		
+		if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+			
+		//update
+		$sql = 'DELETE FROM customer WHERE CustomerID=1;';
+		$result = $conn->query($sql);
+	
+		mysqli_close($conn);
+	
+		//update link to table page
+		echo "<script>window.location = 'customer.php'</script>";
+		}
+		
+		//add stuff
+		function add() {
+		$servername = "localhost";
+		$db_username = "root";
+		$db_password = "";
+		$database = "mydb";
+		
+		//update vars
+		$customerid=$_POST['customerid']; 
+		$firstname=$_POST['firstname'];
+		$lastname=$_POST['lastname'];
+		$email=$_POST['email'];
+		
+		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
+		
+		if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+			
+		//update 
+		$sql = 'INSERT INTO customer VALUES ('.$customerid.', "'.$firstname.'", "'.$lastname.'", "'.$email.'");';
+		$result = $conn->query($sql);
+	
+		mysqli_close($conn);
+	
+		//update 
+		echo "<script>window.location = 'customer.php'</script>";
+		}
+		
+		//update stuff
+		function update() {
+		$servername = "localhost";
+		$db_username = "root";
+		$db_password = "";
+		$database = "mydb";
+		
+		//update
+		$customerid=$_POST['customerid']; 
+		$firstname=$_POST['firstname'];
+		$lastname=$_POST['lastname'];
+		$email=$_POST['email'];
+		
+		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
+		
+		if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+			
+		//update
+		$sql = 'UPDATE customer SET CustomerID='.$customerid.', CustomerLastName="'.$lastname.'", CustomerFirstName="'.$firstname.'", CustomerEmail="'.$email.'" WHERE CustomerID='.$customerid.';';
+		$result = $conn->query($sql);
+	
+		mysqli_close($conn);
+		
+		//update
+		echo "<script>window.location = 'customer.php'</script>";
+		}
+	?>
+	
+ <!-- forms, update add, remove, update -->
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s4"><a href="#remove" class="active" >Remove</a></li>
+        <li class="tab col s4"><a href="#add">Add</a></li>
+        <li class="tab col s4"><a href="#update">Update</a></li>
+      </ul>
+    </div>
+	<br>
+	
+    <div id="remove" class="col s12">
+	<br>
+	<br>
+		<form method="post"> 
+		<p>Customer ID to remove:</p>
+		<input type="text" name="customerid"/> 
+		<input class="btn" type="submit" name="remove" value="REMOVE" /> 
+		</form> 
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	</div>
+	
+    <div id="add" class="col s12">
+	<br>
+	<br>
+		<form method="post"> 
+		<p>Customer ID:</p>
+		<input type="text" name="customerid"/> 
+		<p>First Name:</p>
+		<input type="text" name="firstname"/> 
+		<p>Last Name:</p>
+		<input type="text" name="lastname"/> 
+		<p>Customer Email:</p>
+		<input type="text" name="email"/> 
+		<input class="btn" type="submit" name="add" value="ADD" /> 
+		</form> 
+	<br>
+	<br>
+	<br>
+	</div>
+    <div id="update" class="col s12">
+	<br>
+	<br>
+		<form method="post"> 
+		<p>Customer ID:</p>
+		<input type="text" name="customerid"/> 
+		<p>First Name:</p>
+		<input type="text" name="firstname"/> 
+		<p>Last Name:</p>
+		<input type="text" name="lastname"/> 
+		<p>Customer Email:</p>
+		<input type="text" name="email"/> 
+		<input class="btn" type="submit" name="update" value="UPDATE" /> 
+		</form> 
+	<br>
+	<br>
+	<br>
+	</div>
+  </div>
+  
+		<a class="waves-effect waves-light btn-large modal-trigger" href="customer.php"><i class="material-icons left">arrow_left</i>BACK</a>
+		<br>
+		<br>
+		<br>
+		<br>
+		</div>
+
+		<footer class="page-footer teal lighten-1">
+			<div class="footer-copyright">
+				<div class="container">
+					<div class="hide-on-small-only">
+						Made by Bepis Teckis Inc. | 2020
+						<a class="blue darken-1 waves-effect waves-light btn" style="margin-left:25px;" href="about.html">ABOUT</a>
+						<a class="blue darken-1 waves-effect waves-light btn" style="margin-left:25px;" href="legal.html">LEGAL</a>
+					</div>
+					<div class="hide-on-med-and-up center">
+						Made by Bepis Teckis Inc. | 2020
+						</br>
+						<a class="blue darken-1 waves-effect waves-light btn" style="margin-top:8px;" href="about.html">ABOUT</a>
+						<a class="blue darken-1 waves-effect waves-light btn" style="margin-left:25px; margin-top:8px;" href="legal.html">LEGAL</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!--  Scripts-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+		<script src="js/materialize.js"></script>
+		<script src="js/init.js"></script>
+	</body>
+</html>
