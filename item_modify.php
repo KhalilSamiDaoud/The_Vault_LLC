@@ -44,8 +44,13 @@
 		function remove() {
 		$servername = "localhost";
 		$db_username = "root";
+<<<<<<< HEAD
 		$db_password = "password";
 		$database = "440_project_chk";
+=======
+		$db_password = "";
+		$database = "mydb";
+>>>>>>> 1a19a59f9e5fcb6e88eb41b832f15284275ef827
 		
 		//set local vars
 		$itemid=$_POST['itemid']; 
@@ -70,8 +75,13 @@
 		function add() {
 		$servername = "localhost";
 		$db_username = "root";
+<<<<<<< HEAD
 		$db_password = "password";
 		$database = "440_project_chk";
+=======
+		$db_password = "";
+		$database = "mydb";
+>>>>>>> 1a19a59f9e5fcb6e88eb41b832f15284275ef827
 		
 		//update vars
 		$itemid=$_POST['itemid']; 
@@ -98,8 +108,13 @@
 		function update() {
 		$servername = "localhost";
 		$db_username = "root";
+<<<<<<< HEAD
 		$db_password = "password";
 		$database = "440_project_chk";
+=======
+		$db_password = "";
+		$database = "mydb";
+>>>>>>> 1a19a59f9e5fcb6e88eb41b832f15284275ef827
 		
 		//update
 		$itemid=$_POST['itemid']; 
