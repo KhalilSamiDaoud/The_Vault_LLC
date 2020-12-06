@@ -32,7 +32,6 @@
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
 					<select name="forma" onchange="location = this.value;">
-<<<<<<< HEAD
 						<option value="customer.php">Customer</option>
 						<option value="brand.php">Brand</option>
 						<option value="item.php">Item</option>
@@ -43,18 +42,6 @@
 						<option value="shipment.php">Shipment</option>
 						<option value="stocks.php">Stocks</option>
 						<option value="store.php">Store</option>
-=======
-						<option value="item.php">Customer</option>
-						<option value="2">Brand</option>
-						<option value="3">Buys</option>
-						<option value="4">Contains</option>
-						<option value="5">Item</option>
-						<option value="6">CustPhoneNum</option>
-						<option value="7">Distributor</option>
-						<option value="9">Shipment</option>
-						<option value="10">Stocks</option>
-						<option value="11">Store</option>
->>>>>>> 1a19a59f9e5fcb6e88eb41b832f15284275ef827
 					</select>
 			</div>
   
@@ -62,14 +49,8 @@
 	<?php
 	$servername = "localhost";
 	$db_username = "root";
-<<<<<<< HEAD
 	$db_password = "password";
 	$database = "440_project_chk";
-
-=======
-	$db_password = "";
-	$database = "mydb";
->>>>>>> 1a19a59f9e5fcb6e88eb41b832f15284275ef827
 	
 	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 
@@ -80,20 +61,11 @@
 	$sql = 'SELECT * FROM customer;';
 	$result = $conn->query($sql);
 	
-<<<<<<< HEAD
 	$list = array(array("Customer ID"=>"","Customer First Name"=>"", "Customer Last Name"=>"", "Customer Email"=>""));
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
 			array_push($list, array($row["CustomerID"],$row["CustomerFirstName"],$row["CustomerLastName"],$row["CustomerEmail"]));
-=======
-	$list = array(array("CustomerID"=>"","CustomerLastName"=>"","CustomerFirstName"=>"", "CustomerEmail"=>""));
-	if ($result->num_rows > 0) {
-		// output data of each row
-		while($row = $result->fetch_assoc()) {
-			#echo "Customer ID: " . $row["CustomerID"]. " Last Name: " . $row["CustomerLastName"]. " First Name: ". $row["CustomerFirstName"]. " Customer Email: ". $row["CustomerEmail"]."<br>";
-			array_push($list, array($row["CustomerID"],$row["CustomerLastName"],$row["CustomerFirstName"], $row["CustomerEmail"]));
->>>>>>> 1a19a59f9e5fcb6e88eb41b832f15284275ef827
 		}
 	} else {
 		echo "0 results";
@@ -121,10 +93,7 @@
 	  
 		<br>
 		
-<<<<<<< HEAD
-=======
-		<!-- change the href to "table"_modify -->
->>>>>>> 1a19a59f9e5fcb6e88eb41b832f15284275ef827
+
 		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="customer_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
   
 		<br><br><br><br>
