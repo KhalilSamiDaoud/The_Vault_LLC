@@ -26,58 +26,31 @@
 			</div>
 	
 			<br>
-<?php 
-	$servername = "localhost";
-	$db_username = "root";
-	$db_password = "password";
-	$database = "440_project_chk";
-	
-	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
-	
-	$sql = 'show tables;';
-	$result = $conn->query($sql);
-	$table_list = array("");
-	while ($row = $result->fetch_assoc()) {
-		array_push($table_list, $row["Tables_in_440_project_chk"]);
-	}
-	
-	#foreach ($table_list as $table) {
-	#	echo $table . "<br>";
-	#}
-
-	mysqli_close($conn);
-?>
+			
+			<!-- TO DO: make all of the "options" have an href to their respective DB page -->
 			<div class = "row">
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
-					<!--<select>
-						<option value="1"></option>
+					<select>
+						<option value="1">Item</option>
 						<option value="2">Brand</option>
 						<option value="3">Buys</option>
 						<option value="4">Contains</option>
 						<option value="5">Customer</option>
 						<option value="6">CustPhoneNum</option>
 						<option value="7">Distributor</option>
-						<option value="8">Item</option>
 						<option value="9">Shipment</option>
 						<option value="10">Stocks</option>
 						<option value="11">Store</option>
-					</select>-->
-					<select>
-						<?php foreach($table_list as $table){ ?>
-						<option><?php echo $table?></option>
-						<?php  } ?>
 					</select>
 			</div>
   
-<?php
+  <!-- get -->
+	<?php
 	$servername = "localhost";
 	$db_username = "root";
-	$db_password = "password";
-	$database = "440_project_chk";
+	$db_password = "";
+	$database = "mydb";
 	
 	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 
@@ -99,7 +72,7 @@
 		echo "0 results";
 	}
 	mysqli_close($conn);
-?>
+	?>
 
 	<?php if (count($list) > 0): ?>
 		<table>
@@ -119,56 +92,9 @@
 		</table>
 	<?php endif; ?>
 	  
-			<a class="waves-effect waves-light btn-large modal-trigger" data-target="add"><i class="material-icons left">add_circle</i>ADD</a>
-			<a class="waves-effect waves-light btn-large modal-trigger" data-target="remove"><i class="material-icons left">remove_circle</i>REMOVE</a>
-			<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
-	
-			<div id="add" class="modal">
-				<div class="modal-content">
-					<h4>Add Entry:</h4>
-					<p>
-						<label for="itemid">ItemID:</label>
-						<input type="text" id="itemid" name="itemid"><br><br>
-						<label for="brandid">BrandID:</label>
-						<input type="text" id="brandid" name="brandid"><br><br>
-						<label for="itemname">Item Name:</label>
-						<input type="text" id="itemname" name="itemname"><br><br>
-					</p>
-				</div>
-				<div class="modal-footer">
-					<a href="#!" class="blue modal-close waves-effect waves-green btn-flat">DONE</a>
-				</div>
-			</div>
-  
-			<div id="remove" class="modal">
-				<div class="modal-content">
-					<h4>Remove Entry:</h4>
-					<p>
-						<label for="itemid">ItemID:</label>
-						<input type="text" id="itemid" name="itemid"><br><br>
-					</p>
-				</div>
-				<div class="modal-footer">
-					<a href="#!" class="blue modal-close waves-effect waves-green btn-flat">DONE</a>
-				</div>
-			</div>
-  
-			<div id="modify" class="modal">
-				<div class="modal-content">
-					<h4>Modify Entry:</h4>
-					<p>
-						<label for="itemid">ItemID:</label>
-						<input type="text" id="itemid" name="itemid"><br><br>
-						<label for="brandid">BrandID:</label>
-						<input type="text" id="brandid" name="brandid"><br><br>
-						<label for="itemname">Item Name:</label>
-						<input type="text" id="itemname" name="itemname"><br><br>
-					</p>
-				</div>
-				<div class="modal-footer">
-					<a href="#!" class="blue modal-close waves-effect waves-green btn-flat">DONE</a>
-				</div>
-			</div>
+		<br>
+		
+		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="item_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
   
 		<br><br><br><br>
 		</div>
