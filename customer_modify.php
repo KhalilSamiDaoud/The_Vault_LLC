@@ -23,7 +23,7 @@
 		<!-- change to table name -->
 		<div class="container">
 			<div class="section no-pad-bot" id="index-banner">
-				<h3 class="header center">Modify Table - Item</h3>
+				<h3 class="header center">Modify Table - Customer</h3>
 			</div>
 			
 	<!-- remove -->
@@ -44,11 +44,11 @@
 		function remove() {
 		$servername = "localhost";
 		$db_username = "root";
-		$db_password = "password";
-		$database = "440_project_chk";
+		$db_password = "";
+		$database = "mydb";
 		
 		//set local vars
-		$itemid=$_POST['itemid']; 
+		$customerid=$_POST['customerid']; 
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -57,26 +57,27 @@
 		}
 			
 		//update
-		$sql = 'DELETE FROM item WHERE ItemID='.$itemid.';';
+		$sql = 'DELETE FROM customer WHERE CustomerID=1;';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
 		//update link to table page
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'customer.php'</script>";
 		}
 		
 		//add stuff
 		function add() {
 		$servername = "localhost";
 		$db_username = "root";
-		$db_password = "password";
-		$database = "440_project_chk";
+		$db_password = "";
+		$database = "mydb";
 		
 		//update vars
-		$itemid=$_POST['itemid']; 
-		$brandid=$_POST['brandid'];
-		$itemname=$_POST['itemname'];
+		$customerid=$_POST['customerid']; 
+		$firstname=$_POST['firstname'];
+		$lastname=$_POST['lastname'];
+		$email=$_POST['email'];
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -85,26 +86,27 @@
 		}
 			
 		//update 
-		$sql = 'INSERT INTO item VALUES ('.$itemid.', '.$brandid.', "'.$itemname.'");';
+		$sql = 'INSERT INTO customer VALUES ('.$customerid.', "'.$firstname.'", "'.$lastname.'", "'.$email.'");';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
 		//update 
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'customer.php'</script>";
 		}
 		
 		//update stuff
 		function update() {
 		$servername = "localhost";
 		$db_username = "root";
-		$db_password = "password";
-		$database = "440_project_chk";
+		$db_password = "";
+		$database = "mydb";
 		
 		//update
-		$itemid=$_POST['itemid']; 
-		$brandid=$_POST['brandid'];
-		$itemname=$_POST['itemname'];
+		$customerid=$_POST['customerid']; 
+		$firstname=$_POST['firstname'];
+		$lastname=$_POST['lastname'];
+		$email=$_POST['email'];
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -113,13 +115,13 @@
 		}
 			
 		//update
-		$sql = 'UPDATE item SET ItemID='.$itemid.', BrandID='.$brandid.', ItemName="'.$itemname.'" WHERE ItemID='.$itemid.';';
+		$sql = 'UPDATE customer SET CustomerID='.$customerid.', CustomerLastName="'.$lastname.'", CustomerFirstName="'.$firstname.'", CustomerEmail="'.$email.'" WHERE CustomerID='.$customerid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 		
 		//update
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'customer.php'</script>";
 		}
 	?>
 	
@@ -138,8 +140,8 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID to remove:</p>
-		<input type="text" name="itemid"/> 
+		<p>Customer ID to remove:</p>
+		<input type="text" name="customerid"/> 
 		<input class="btn" type="submit" name="remove" value="REMOVE" /> 
 		</form> 
 	<br>
@@ -153,12 +155,14 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID:</p>
-		<input type="text" name="itemid"/> 
-		<p>Brand ID:</p>
-		<input type="text" name="brandid"/> 
-		<p>Item Name:</p>
-		<input type="text" name="itemname"/> 
+		<p>Customer ID:</p>
+		<input type="text" name="customerid"/> 
+		<p>First Name:</p>
+		<input type="text" name="firstname"/> 
+		<p>Last Name:</p>
+		<input type="text" name="lastname"/> 
+		<p>Customer Email:</p>
+		<input type="text" name="email"/> 
 		<input class="btn" type="submit" name="add" value="ADD" /> 
 		</form> 
 	<br>
@@ -169,12 +173,14 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID:</p>
-		<input type="text" name="itemid"/> 
-		<p>Brand ID:</p>
-		<input type="text" name="brandid"/> 
-		<p>Item Name:</p>
-		<input type="text" name="itemname"/> 
+		<p>Customer ID:</p>
+		<input type="text" name="customerid"/> 
+		<p>First Name:</p>
+		<input type="text" name="firstname"/> 
+		<p>Last Name:</p>
+		<input type="text" name="lastname"/> 
+		<p>Customer Email:</p>
+		<input type="text" name="email"/> 
 		<input class="btn" type="submit" name="update" value="UPDATE" /> 
 		</form> 
 	<br>
@@ -183,7 +189,7 @@
 	</div>
   </div>
   
-		<a class="waves-effect waves-light btn-large modal-trigger" href="item.php"><i class="material-icons left">arrow_left</i>BACK</a>
+		<a class="waves-effect waves-light btn-large modal-trigger" href="customer.php"><i class="material-icons left">arrow_left</i>BACK</a>
 		<br>
 		<br>
 		<br>

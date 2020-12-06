@@ -44,7 +44,6 @@
 						<option value="store.php">Store</option>
 					</select>
 			</div>
-
   
   <!-- get -->
 	<?php
@@ -52,6 +51,7 @@
 	$db_username = "root";
 	$db_password = "password";
 	$database = "440_project_chk";
+
 	
 	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 

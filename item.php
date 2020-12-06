@@ -95,6 +95,7 @@
 	  
 		<br>
 		
+		<!-- change the href to "table"_modify -->
 		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="item_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
   
 		<br><br><br><br>
