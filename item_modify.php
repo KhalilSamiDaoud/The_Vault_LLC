@@ -43,8 +43,8 @@
 		function remove() {
 		$servername = "localhost";
 		$db_username = "root";
-		$db_password = "";
-		$database = "mydb";
+		$db_password = "password";
+		$database = "440_project_chk";
 		
 		
 		$itemid=$_POST['itemid']; 
@@ -67,8 +67,8 @@
 		function add() {
 		$servername = "localhost";
 		$db_username = "root";
-		$db_password = "";
-		$database = "mydb";
+		$db_password = "password";
+		$database = "440_project_chk";
 		
 		
 		$itemid=$_POST['itemid']; 
@@ -93,8 +93,8 @@
 		function update() {
 		$servername = "localhost";
 		$db_username = "root";
-		$db_password = "";
-		$database = "mydb";
+		$db_password = "password";
+		$database = "440_project_chk";
 		
 		
 		$itemid=$_POST['itemid']; 

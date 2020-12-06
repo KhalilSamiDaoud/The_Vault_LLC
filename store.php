@@ -32,8 +32,9 @@
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
 					<select name="forma" onchange="location = this.value;">
-						<option value="item.php">Item</option>
+						<option value="store.php">Store</option>
 						<option value="brand.php">Brand</option>
+						<option value="item.php">Item</option>
 						<option value="buys.php">Buys</option>
 						<option value="contains.php">Contains</option>
 						<option value="customer.php">Customer</option>
@@ -41,7 +42,6 @@
 						<option value="distributor.php">Distributor</option>
 						<option value="shipment.php">Shipment</option>
 						<option value="stocks.php">Stocks</option>
-						<option value="store.php">Store</option>
 					</select>
 			</div>
 
@@ -59,15 +59,14 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 			
-	$sql = 'SELECT * FROM item;';
+	$sql = 'SELECT * FROM store;';
 	$result = $conn->query($sql);
 	
-	$list = array(array("ItemID"=>"","BrandID"=>"","Item Name"=>""));
+	$list = array(array("StoreID"=>"","Store Name"=>"","StoreLocation"=>""));
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			#echo "ItemID: " . $row["ItemID"]. " BrandID: " . $row["BrandID"]. " ItemName ". $row["ItemName"]. "<br>";
-			array_push($list, array($row["ItemID"],$row["BrandID"],$row["ItemName"]));
+			array_push($list, array($row["StoreID"],$row["StoreName"],$row["StoreLocation"]));
 		}
 	} else {
 		echo "0 results";
@@ -95,7 +94,7 @@
 	  
 		<br>
 		
-		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="item_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
+		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="store_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
   
 		<br><br><br><br>
 		</div>

@@ -32,8 +32,8 @@
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
 					<select name="forma" onchange="location = this.value;">
-						<option value="item.php">Item</option>
 						<option value="brand.php">Brand</option>
+						<option value="item.php">Item</option>
 						<option value="buys.php">Buys</option>
 						<option value="contains.php">Contains</option>
 						<option value="customer.php">Customer</option>
@@ -59,15 +59,14 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 			
-	$sql = 'SELECT * FROM item;';
+	$sql = 'SELECT * FROM brand;';
 	$result = $conn->query($sql);
 	
-	$list = array(array("ItemID"=>"","BrandID"=>"","Item Name"=>""));
+	$list = array(array("BrandID"=>"","Brand Name"=>""));
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			#echo "ItemID: " . $row["ItemID"]. " BrandID: " . $row["BrandID"]. " ItemName ". $row["ItemName"]. "<br>";
-			array_push($list, array($row["ItemID"],$row["BrandID"],$row["ItemName"]));
+			array_push($list, array($row["BrandID"],$row["BrandName"]));
 		}
 	} else {
 		echo "0 results";
@@ -95,7 +94,7 @@
 	  
 		<br>
 		
-		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="item_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
+		<a class="waves-effect waves-light btn-large modal-trigger" data-target="modify" href="brand_modify.php"><i class="material-icons left">swap_vertical_circle</i>MODIFY</a>
   
 		<br><br><br><br>
 		</div>
