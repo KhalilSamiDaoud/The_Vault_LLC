@@ -63,12 +63,7 @@
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
-		
-	$shop = array( array("title"=>"rose", "price"=>1.25 , "number"=>15),
-				   array("title"=>"daisy", "price"=>0.75 , "number"=>25),
-				   array("title"=>"orchid", "price"=>1.15 , "number"=>7)); 
-	
-	
+			
 	$sql = 'SELECT * FROM item;';
 	$result = $conn->query($sql);
 	
@@ -101,8 +96,6 @@
   </tbody>
 </table>
 <?php endif; ?>
-
-
 	  
 			<a class="waves-effect waves-light btn-large modal-trigger" data-target="add"><i class="material-icons left">add_circle</i>ADD</a>
 			<a class="waves-effect waves-light btn-large modal-trigger" data-target="remove"><i class="material-icons left">remove_circle</i>REMOVE</a>
