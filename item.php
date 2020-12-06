@@ -26,11 +26,34 @@
 			</div>
 	
 			<br>
+<?php 
+	$servername = "localhost";
+	$db_username = "root";
+	$db_password = "password";
+	$database = "440_project_chk";
 	
+	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	
+	$sql = 'show tables;';
+	$result = $conn->query($sql);
+	$table_list = array("");
+	while ($row = $result->fetch_assoc()) {
+		array_push($table_list, $row["Tables_in_440_project_chk"]);
+	}
+	
+	#foreach ($table_list as $table) {
+	#	echo $table . "<br>";
+	#}
+
+	mysqli_close($conn);
+?>
 			<div class = "row">
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
-					<select>
+					<!--<select>
 						<option value="1"></option>
 						<option value="2">Brand</option>
 						<option value="3">Buys</option>
@@ -42,16 +65,14 @@
 						<option value="9">Shipment</option>
 						<option value="10">Stocks</option>
 						<option value="11">Store</option>
+					</select>-->
+					<select>
+						<?php foreach($table_list as $table){ ?>
+						<option><?php echo $table?></option>
+						<?php  } ?>
 					</select>
 			</div>
   
-			<!--<ul class="collection with-header">
-				<li class="collection-header"><h4>The name of the Table</h4></li>
-				<li class="collection-item">table entry 1</li>
-				<li class="collection-item">table entry 2</li>
-				<li class="collection-item">table entry 3</li>
-				<li class="collection-item">table entry 4</li>
-			</ul>-->
 <?php
 	$servername = "localhost";
 	$db_username = "root";
@@ -77,25 +98,26 @@
 	} else {
 		echo "0 results";
 	}
+	mysqli_close($conn);
 ?>
 
-<?php if (count($list) > 0): ?>
-	<table>
-		<thead>
-			<tr>
-				<th><?php echo implode('</th><th>', array_keys(current($list))); ?></th>
-			</tr>
-		</thead>
-<tbody>
+	<?php if (count($list) > 0): ?>
+		<table>
+			<thead>
+				<tr>
+					<th><?php echo implode('</th><th>', array_keys(current($list))); ?></th>
+				</tr>
+			</thead>
+		<tbody>
 
-<?php foreach ($list as $col): array_map('htmlentities', $col); ?>
-    <tr>
-      <td><?php echo implode('</td><td>', $col); ?></td>
-    </tr>
-<?php endforeach; ?>
-  </tbody>
-</table>
-<?php endif; ?>
+	<?php foreach ($list as $col): array_map('htmlentities', $col); ?>
+		<tr>
+			<td><?php echo implode('</td><td>', $col); ?></td>
+		</tr>
+	<?php endforeach; ?>
+		</tbody>
+		</table>
+	<?php endif; ?>
 	  
 			<a class="waves-effect waves-light btn-large modal-trigger" data-target="add"><i class="material-icons left">add_circle</i>ADD</a>
 			<a class="waves-effect waves-light btn-large modal-trigger" data-target="remove"><i class="material-icons left">remove_circle</i>REMOVE</a>
@@ -104,7 +126,14 @@
 			<div id="add" class="modal">
 				<div class="modal-content">
 					<h4>Add Entry:</h4>
-					<p>To Do~</p>
+					<p>
+						<label for="itemid">ItemID:</label>
+						<input type="text" id="itemid" name="itemid"><br><br>
+						<label for="brandid">BrandID:</label>
+						<input type="text" id="brandid" name="brandid"><br><br>
+						<label for="itemname">Item Name:</label>
+						<input type="text" id="itemname" name="itemname"><br><br>
+					</p>
 				</div>
 				<div class="modal-footer">
 					<a href="#!" class="blue modal-close waves-effect waves-green btn-flat">DONE</a>
@@ -114,7 +143,10 @@
 			<div id="remove" class="modal">
 				<div class="modal-content">
 					<h4>Remove Entry:</h4>
-					<p>To Do~</p>
+					<p>
+						<label for="itemid">ItemID:</label>
+						<input type="text" id="itemid" name="itemid"><br><br>
+					</p>
 				</div>
 				<div class="modal-footer">
 					<a href="#!" class="blue modal-close waves-effect waves-green btn-flat">DONE</a>
@@ -124,7 +156,14 @@
 			<div id="modify" class="modal">
 				<div class="modal-content">
 					<h4>Modify Entry:</h4>
-					<p>To Do~</p>
+					<p>
+						<label for="itemid">ItemID:</label>
+						<input type="text" id="itemid" name="itemid"><br><br>
+						<label for="brandid">BrandID:</label>
+						<input type="text" id="brandid" name="brandid"><br><br>
+						<label for="itemname">Item Name:</label>
+						<input type="text" id="itemname" name="itemname"><br><br>
+					</p>
 				</div>
 				<div class="modal-footer">
 					<a href="#!" class="blue modal-close waves-effect waves-green btn-flat">DONE</a>
