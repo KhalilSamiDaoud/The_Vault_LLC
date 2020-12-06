@@ -33,17 +33,18 @@
 					<label>Current Table</label>
 					<select name="forma" onchange="location = this.value;">
 						<option value="item.php">Item</option>
-						<option value="2">Brand</option>
-						<option value="3">Buys</option>
-						<option value="4">Contains</option>
-						<option value="5">Customer</option>
-						<option value="6">CustPhoneNum</option>
-						<option value="7">Distributor</option>
-						<option value="9">Shipment</option>
-						<option value="10">Stocks</option>
-						<option value="11">Store</option>
+						<option value="brand.php">Brand</option>
+						<option value="buys.php">Buys</option>
+						<option value="contains.php">Contains</option>
+						<option value="customer.php">Customer</option>
+						<option value="custphonenum.php">CustPhoneNum</option>
+						<option value="distributor.php">Distributor</option>
+						<option value="shipment.php">Shipment</option>
+						<option value="stocks.php">Stocks</option>
+						<option value="store.php">Store</option>
 					</select>
 			</div>
+
   
   <!-- get -->
 	<?php
