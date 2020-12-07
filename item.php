@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<!-- This page is a table from the VaultDB, and will display all items that are in the table. The table can be modified by pressing the "modify" button, and 
+	Users can change tables through the drop-down box -->
+
 <html lang="en">
 	<head>
 		<meta name="theme-color" content="#64FFDA" />

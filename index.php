@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<!-- this page simply re-directs to the login page -->
+
 <html lang="en">
 <head>
   <meta http-equiv="refresh" content="0; url=home.html" />

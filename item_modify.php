@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<!-- This page is a "modify" page for its corresponding table. users have the option to return to their tables view, or add, update, or remove an entry from the table,
+	This is accomplished by forms which the user can tab between. -->
+
 <html lang="en">
 	<head>
 		<meta name="theme-color" content="#64FFDA" />
