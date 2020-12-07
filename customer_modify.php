@@ -57,7 +57,7 @@
 		}
 			
 		//update
-		$sql = 'DELETE FROM customer WHERE CustomerID=1;';
+		$sql = 'DELETE FROM customer WHERE CustomerID='.$customerid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);

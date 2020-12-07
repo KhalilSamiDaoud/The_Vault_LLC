@@ -50,8 +50,8 @@
 	<?php
 	$servername = "localhost";
 	$db_username = "root";
-	$db_password = "password";
-	$database = "440_project_chk";
+	$db_password = "";
+	$database = "mydb";
 	
 	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 

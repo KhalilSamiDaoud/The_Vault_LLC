@@ -27,7 +27,6 @@
 	
 			<br>
 			
-			<!-- TO DO: make all of the "options" have an href to their respective DB page -->
 			<div class = "row">
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
@@ -50,8 +49,8 @@
 	<?php
 	$servername = "localhost";
 	$db_username = "root";
-	$db_password = "password";
-	$database = "440_project_chk";
+	$db_password = "";
+	$database = "mydb";
 	
 	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 
@@ -62,11 +61,11 @@
 	$sql = 'SELECT * FROM contains;';
 	$result = $conn->query($sql);
 	
-	$list = array(array("Item ID"=>"","Shipment ID"=>"","Count"=>""));
+	$list = array(array("Shipment ID"=>"", "Item ID"=>"", "Count"=>""));
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			array_push($list, array($row["ItemID"],$row["ShipmentID"],$row["Count"]));
+			array_push($list, array($row["ShipmentID"], $row["ItemID"], $row["Count"]));
 		}
 	} else {
 		echo "0 results";

@@ -23,7 +23,7 @@
 		<!-- change to table name -->
 		<div class="container">
 			<div class="section no-pad-bot" id="index-banner">
-				<h3 class="header center">Modify Table - Item</h3>
+				<h3 class="header center">Modify Table - Brand</h3>
 			</div>
 			
 	<!-- remove -->
@@ -48,7 +48,7 @@
 		$database = "mydb";
 		
 		//set local vars
-		$itemid=$_POST['itemid']; 
+		$brandid=$_POST['brandid']; 
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -57,13 +57,13 @@
 		}
 			
 		//update
-		$sql = 'DELETE FROM item WHERE ItemID='.$itemid.';';
+		$sql = 'DELETE FROM brand WHERE BrandID='.$brandid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
 		//update link to table page
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'brand.php'</script>";
 		}
 		
 		//add stuff
@@ -74,9 +74,8 @@
 		$database = "mydb";
 		
 		//update vars
-		$itemid=$_POST['itemid']; 
 		$brandid=$_POST['brandid'];
-		$itemname=$_POST['itemname'];
+		$brandname=$_POST['brandname']; 
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -85,13 +84,13 @@
 		}
 			
 		//update 
-		$sql = 'INSERT INTO item VALUES ('.$itemid.', '.$brandid.', "'.$itemname.'");';
+		$sql = 'INSERT INTO brand VALUES ('.$brandid.', "'.$brandname.'");';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
 		//update 
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'brand.php'</script>";
 		}
 		
 		//update stuff
@@ -102,9 +101,8 @@
 		$database = "mydb";
 		
 		//update
-		$itemid=$_POST['itemid']; 
 		$brandid=$_POST['brandid'];
-		$itemname=$_POST['itemname'];
+		$brandname=$_POST['brandname'];
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -113,13 +111,13 @@
 		}
 			
 		//update
-		$sql = 'UPDATE item SET ItemID='.$itemid.', BrandID='.$brandid.', ItemName="'.$itemname.'" WHERE ItemID='.$itemid.';';
+		$sql = 'UPDATE brand SET BrandID='.$brandid.', BrandName="'.$brandname.'" WHERE BrandID='.$brandid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 		
 		//update
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'brand.php'</script>";
 		}
 	?>
 	
@@ -138,8 +136,8 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID to remove:</p>
-		<input type="text" name="itemid"/> 
+		<p>Brand ID to remove:</p>
+		<input type="text" name="brandid"/> 
 		<input class="btn" type="submit" name="remove" value="REMOVE" /> 
 		</form> 
 	<br>
@@ -153,12 +151,10 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID:</p>
-		<input type="text" name="itemid"/> 
 		<p>Brand ID:</p>
 		<input type="text" name="brandid"/> 
-		<p>Item Name:</p>
-		<input type="text" name="itemname"/> 
+		<p>Brand Name:</p>
+		<input type="text" name="brandname"/> 
 		<input class="btn" type="submit" name="add" value="ADD" /> 
 		</form> 
 	<br>
@@ -169,12 +165,10 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID:</p>
-		<input type="text" name="itemid"/> 
 		<p>Brand ID:</p>
 		<input type="text" name="brandid"/> 
-		<p>Item Name:</p>
-		<input type="text" name="itemname"/> 
+		<p>Brand Name:</p>
+		<input type="text" name="brandname"/> 
 		<input class="btn" type="submit" name="update" value="UPDATE" /> 
 		</form> 
 	<br>
@@ -183,7 +177,7 @@
 	</div>
   </div>
   
-		<a class="waves-effect waves-light btn-large modal-trigger" href="item.php"><i class="material-icons left">arrow_left</i>BACK</a>
+		<a class="waves-effect waves-light btn-large modal-trigger" href="brand.php"><i class="material-icons left">arrow_left</i>BACK</a>
 		<br>
 		<br>
 		<br>

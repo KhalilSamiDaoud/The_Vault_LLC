@@ -27,7 +27,6 @@
 	
 			<br>
 			
-			<!-- TO DO: make all of the "options" have an href to their respective DB page -->
 			<div class = "row">
 				<form class = "col s3 l3 m3">
 					<label>Current Table</label>
@@ -50,8 +49,8 @@
 	<?php
 	$servername = "localhost";
 	$db_username = "root";
-	$db_password = "password";
-	$database = "440_project_chk";
+	$db_password = "";
+	$database = "mydb";
 	
 	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 

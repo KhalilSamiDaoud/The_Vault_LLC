@@ -23,7 +23,7 @@
 		<!-- change to table name -->
 		<div class="container">
 			<div class="section no-pad-bot" id="index-banner">
-				<h3 class="header center">Modify Table - Item</h3>
+				<h3 class="header center">Modify Table - Distributor</h3>
 			</div>
 			
 	<!-- remove -->
@@ -48,7 +48,7 @@
 		$database = "mydb";
 		
 		//set local vars
-		$itemid=$_POST['itemid']; 
+		$distributorid=$_POST['distributorid']; 
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -57,13 +57,13 @@
 		}
 			
 		//update
-		$sql = 'DELETE FROM item WHERE ItemID='.$itemid.';';
+		$sql = 'DELETE FROM distributor WHERE DistributorID='.$distributorid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
 		//update link to table page
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'distributor.php'</script>";
 		}
 		
 		//add stuff
@@ -74,9 +74,8 @@
 		$database = "mydb";
 		
 		//update vars
-		$itemid=$_POST['itemid']; 
-		$brandid=$_POST['brandid'];
-		$itemname=$_POST['itemname'];
+		$distributorid=$_POST['distributorid']; 
+		$distributorname=$_POST['distributorname']; 
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -85,13 +84,13 @@
 		}
 			
 		//update 
-		$sql = 'INSERT INTO item VALUES ('.$itemid.', '.$brandid.', "'.$itemname.'");';
+		$sql = 'INSERT INTO distributor VALUES ('.$distributorid.', "'.$distributorname.'");';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
 		//update 
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'distributor.php'</script>";
 		}
 		
 		//update stuff
@@ -102,9 +101,8 @@
 		$database = "mydb";
 		
 		//update
-		$itemid=$_POST['itemid']; 
-		$brandid=$_POST['brandid'];
-		$itemname=$_POST['itemname'];
+		$distributorid=$_POST['distributorid']; 
+		$distributorname=$_POST['distributorname'];
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -113,13 +111,13 @@
 		}
 			
 		//update
-		$sql = 'UPDATE item SET ItemID='.$itemid.', BrandID='.$brandid.', ItemName="'.$itemname.'" WHERE ItemID='.$itemid.';';
+		$sql = 'UPDATE distributor SET DistributorID='.$distributorid.', DistributorName="'.$distributorname.'" WHERE DistributorID='.$distributorid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 		
 		//update
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'distributor.php'</script>";
 		}
 	?>
 	
@@ -138,8 +136,8 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID to remove:</p>
-		<input type="text" name="itemid"/> 
+		<p>Distributor ID to remove:</p>
+		<input type="text" name="distributorid"/> 
 		<input class="btn" type="submit" name="remove" value="REMOVE" /> 
 		</form> 
 	<br>
@@ -153,12 +151,10 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID:</p>
-		<input type="text" name="itemid"/> 
-		<p>Brand ID:</p>
-		<input type="text" name="brandid"/> 
-		<p>Item Name:</p>
-		<input type="text" name="itemname"/> 
+		<p>Distributor ID:</p>
+		<input type="text" name="distributorid"/> 
+		<p>Distributor Name:</p>
+		<input type="text" name="distributorname"/> 
 		<input class="btn" type="submit" name="add" value="ADD" /> 
 		</form> 
 	<br>
@@ -169,12 +165,10 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID:</p>
-		<input type="text" name="itemid"/> 
-		<p>Brand ID:</p>
-		<input type="text" name="brandid"/> 
-		<p>Item Name:</p>
-		<input type="text" name="itemname"/> 
+		<p>Distributor ID:</p>
+		<input type="text" name="distributorid"/> 
+		<p>Distributor Name:</p>
+		<input type="text" name="distributorname"/> 
 		<input class="btn" type="submit" name="update" value="UPDATE" /> 
 		</form> 
 	<br>
@@ -183,7 +177,7 @@
 	</div>
   </div>
   
-		<a class="waves-effect waves-light btn-large modal-trigger" href="item.php"><i class="material-icons left">arrow_left</i>BACK</a>
+		<a class="waves-effect waves-light btn-large modal-trigger" href="distributor.php"><i class="material-icons left">arrow_left</i>BACK</a>
 		<br>
 		<br>
 		<br>

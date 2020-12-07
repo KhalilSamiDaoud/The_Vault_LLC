@@ -23,7 +23,7 @@
 		<!-- change to table name -->
 		<div class="container">
 			<div class="section no-pad-bot" id="index-banner">
-				<h3 class="header center">Modify Table - Item</h3>
+				<h3 class="header center">Modify Table - Contains</h3>
 			</div>
 			
 	<!-- remove -->
@@ -48,6 +48,7 @@
 		$database = "mydb";
 		
 		//set local vars
+		$shipmentid=$_POST['shipmentid']; 
 		$itemid=$_POST['itemid']; 
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
@@ -57,13 +58,13 @@
 		}
 			
 		//update
-		$sql = 'DELETE FROM item WHERE ItemID='.$itemid.';';
+		$sql = 'DELETE FROM contains WHERE ShipmentID='.$shipmentid.' AND ItemID='.$itemid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
 		//update link to table page
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'contains.php'</script>";
 		}
 		
 		//add stuff
@@ -74,9 +75,9 @@
 		$database = "mydb";
 		
 		//update vars
+		$shipmentid=$_POST['shipmentid']; 
 		$itemid=$_POST['itemid']; 
-		$brandid=$_POST['brandid'];
-		$itemname=$_POST['itemname'];
+		$count=$_POST['count'];
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -85,13 +86,13 @@
 		}
 			
 		//update 
-		$sql = 'INSERT INTO item VALUES ('.$itemid.', '.$brandid.', "'.$itemname.'");';
+		$sql = 'INSERT INTO contains VALUES ('.$itemid.', '.$shipmentid.', '.$count.');';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 	
 		//update 
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'contains.php'</script>";
 		}
 		
 		//update stuff
@@ -102,9 +103,9 @@
 		$database = "mydb";
 		
 		//update
+		$shipmentid=$_POST['shipmentid']; 
 		$itemid=$_POST['itemid']; 
-		$brandid=$_POST['brandid'];
-		$itemname=$_POST['itemname'];
+		$count=$_POST['count'];
 		
 		$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 		
@@ -113,13 +114,13 @@
 		}
 			
 		//update
-		$sql = 'UPDATE item SET ItemID='.$itemid.', BrandID='.$brandid.', ItemName="'.$itemname.'" WHERE ItemID='.$itemid.';';
+		$sql = 'UPDATE contains SET ShipmentID='.$shipmentid.', ItemID='.$itemid.', Count="'.$count.'" WHERE ShipmentID='.$shipmentid.' AND ItemID='.$itemid.';';
 		$result = $conn->query($sql);
 	
 		mysqli_close($conn);
 		
 		//update
-		echo "<script>window.location = 'item.php'</script>";
+		echo "<script>window.location = 'contains.php'</script>";
 		}
 	?>
 	
@@ -138,7 +139,9 @@
 	<br>
 	<br>
 		<form method="post"> 
-		<p>Item ID to remove:</p>
+		<p>ID of Shipment to remove:</p>
+		<input type="text" name="shipmentid"/> 
+		<p>ID of Item to remove:</p>
 		<input type="text" name="itemid"/> 
 		<input class="btn" type="submit" name="remove" value="REMOVE" /> 
 		</form> 
@@ -153,12 +156,12 @@
 	<br>
 	<br>
 		<form method="post"> 
+		<p>Shipment ID:</p>
+		<input type="text" name="shipmentid"/> 
 		<p>Item ID:</p>
 		<input type="text" name="itemid"/> 
-		<p>Brand ID:</p>
-		<input type="text" name="brandid"/> 
-		<p>Item Name:</p>
-		<input type="text" name="itemname"/> 
+		<p>Count:</p>
+		<input type="text" name="count"/> 
 		<input class="btn" type="submit" name="add" value="ADD" /> 
 		</form> 
 	<br>
@@ -169,12 +172,12 @@
 	<br>
 	<br>
 		<form method="post"> 
+		<p>Shipment ID:</p>
+		<input type="text" name="shipmentid"/> 
 		<p>Item ID:</p>
 		<input type="text" name="itemid"/> 
-		<p>Brand ID:</p>
-		<input type="text" name="brandid"/> 
-		<p>Item Name:</p>
-		<input type="text" name="itemname"/> 
+		<p>Count:</p>
+		<input type="text" name="count"/>
 		<input class="btn" type="submit" name="update" value="UPDATE" /> 
 		</form> 
 	<br>
@@ -183,7 +186,7 @@
 	</div>
   </div>
   
-		<a class="waves-effect waves-light btn-large modal-trigger" href="item.php"><i class="material-icons left">arrow_left</i>BACK</a>
+		<a class="waves-effect waves-light btn-large modal-trigger" href="contains.php"><i class="material-icons left">arrow_left</i>BACK</a>
 		<br>
 		<br>
 		<br>

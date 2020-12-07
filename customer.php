@@ -49,8 +49,8 @@
 	<?php
 	$servername = "localhost";
 	$db_username = "root";
-	$db_password = "password";
-	$database = "440_project_chk";
+	$db_password = "";
+	$database = "mydb";
 	
 	$conn = mysqli_connect($servername, $db_username, $db_password, $database);
 
@@ -61,7 +61,7 @@
 	$sql = 'SELECT * FROM customer;';
 	$result = $conn->query($sql);
 	
-	$list = array(array("Customer ID"=>"","Customer First Name"=>"", "Customer Last Name"=>"", "Customer Email"=>""));
+	$list = array(array("Customer ID"=>"","Customer Last Name"=>"", "Customer First Name"=>"", "Customer Email"=>""));
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
